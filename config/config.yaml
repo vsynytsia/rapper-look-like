@@ -1,0 +1,113 @@
+device: cpu
+
+embeddings:
+  path: embeddings/embeddings.pickle
+
+images:
+  download: false
+  root: data/images
+  mode: RGB
+  extension: jpg
+  width: 512
+  height: 512
+  labels:
+  - Lil Uzi Vert
+  - Post Malone
+  - Asap Rocky
+  - Playboi Carti
+  - Travis Scott
+  - XXXTENTACION
+  - Juice WRLD
+  - Lil Peep
+  - Lil Pump
+  - Kanye West
+  - Lil Skies
+  - Baby Keem
+  - Fivio Foreign
+  - Drake
+  - Lil Nas X
+  - Trippie Redd
+  - Quavo
+  - Takeoff
+  - Offset
+  - Pop Smoke
+  - J. Cole
+  - Eminem
+  - Kid Cudi
+  - JID
+  - Future
+  - Lil Yachty
+  - G Herbo
+  - Pharell Williams
+  - Polo G
+  - Justin Bieber
+  - Lil Wayne
+  - Kendrick Lamar
+  - Jay Z
+  - Tupac Shakur
+  - Jay Rock
+  - Pooh Shiesty
+  - Don Toliver
+  - Rick Ross
+  - Chief Keef
+  - Juicy J
+  - Gunna
+  - Lil Baby
+  - Lil Mosey
+  - Denzel Curry
+  - Machine Gun Kelly
+  - Tyler The Creator
+  - Ski Mask The Slump God
+  - Blueface
+  - Vince Staples
+  - Snoop Dogg
+  - Roddy Ricch
+  - DaBaby
+  - Kodak Black
+  - Brent Faiyaz
+  - The Weeknd
+  - Lil Tjay
+  - The Kid LAROI
+  - Isaiah Rashad
+  - Jack Harlow
+  - Earl Sweatshirt
+  - 21 Savage
+  - Asap Ferg
+  - Coi Leray
+  - Nicki Minaj
+  - Cardi B
+  - Doja Cat
+  - Megan Thee Stallion
+  - Ghostemane
+  - Dr. Dre
+  - G-Eazy
+  - Lil Tecca
+  - Frank Ocean
+  - Pusha T
+  - Olivia Rodrigo
+  - Rico Nasty
+  - Kevin Abstract
+  - Lil Durk
+  - Young Thug
+  - YoungBoy Never Broke Again
+  - Ruby Da Cherry
+  - $crim
+  - Tyga
+  - 6LACK
+  - Tyga
+  - 6LACK
+  - Jasiah
+
+logger:
+  app_name: rapper-face-similarity
+
+model:
+  clf_path: model/images_classifier.pickle
+  encoder_path: model/label_encoder.pickle
+
+train:
+  do_train: false
+  load_embeddings: true
+
+inference:
+  images_folder: images_inference

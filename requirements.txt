@@ -1,0 +1,11 @@
+pyyaml~=6.0
+numpy~=1.21.6
+scikit-learn~=1.0.2
+bing-image-downloader~=1.1.2
+facenet-pytorch~=2.5.2
+pillow~=9.0.1
+torch~=1.11.0
+torchvision~=0.12.0
+imagehash~=4.2.1
+matplotlib~=3.5.1
+tqdm~=4.63.0
