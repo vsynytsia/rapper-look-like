@@ -2,7 +2,7 @@
 
 # IntelliJ project files
 .idea
-images_inference/
+data/images/inference
 result.png
 
 ### Python template

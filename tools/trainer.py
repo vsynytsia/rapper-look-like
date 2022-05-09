@@ -24,7 +24,7 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
     """
 
     all_img_paths = load_dataset_paths(root)
-    all_img_labels = list(map(lambda x: x.split('/')[2], all_img_paths))
+    all_img_labels = list(map(lambda x: x.split('/')[3], all_img_paths))
 
     if embeddings is None:
         logger.info('Started extracting faces from images')

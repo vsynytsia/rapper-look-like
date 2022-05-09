@@ -82,6 +82,6 @@ def inference(img_paths: List[str]) -> Tuple[List[str], List[str]]:
 
     nearest_neighbor_indices = image_clf.kneighbors(embeddings, 1, return_distance=False)
     nearest_neighbors = _nearest_indices_to_images(nearest_neighbor_indices)
-    classes_pred = list(map(lambda x: x.split('/')[2], nearest_neighbors))
+    classes_pred = list(map(lambda x: x.split('/')[3], nearest_neighbors))
 
     return nearest_neighbors, classes_pred

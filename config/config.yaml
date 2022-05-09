@@ -5,7 +5,7 @@ embeddings:
 
 images:
   download: false
-  root: data/images
+  root: data/images/train
   mode: RGB
   extension: jpg
   width: 512
@@ -110,4 +110,4 @@ train:
   load_embeddings: false
 
 inference:
-  images_folder: images_inference
+  images_folder: data/images/inference
