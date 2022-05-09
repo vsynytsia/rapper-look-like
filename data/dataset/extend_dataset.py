@@ -53,6 +53,7 @@ def extend_dataset(
     """
 
     _update_config(path='config/config.yaml', new_names=new_names)
+    logger.info('Updated config file with new names')
 
     fetcher = DatasetFetcher(
         names=new_names,

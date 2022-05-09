@@ -31,10 +31,12 @@ def main():
         logger.info('Finished creating dataset')
 
     if config['train']['do_train']:
+        logger.info('Started training')
+        embeddings = None
+
         if config['train']['load_embeddings']:
             with open(config['embeddings']['path'], 'rb') as input_file:
                 embeddings = pickle.load(input_file)
-
             logger.info('Embeddings loaded successfully')
             train(root=config['images']['root'], embeddings=embeddings)
 
@@ -46,7 +48,7 @@ def main():
     input_image_folder = config['inference']['images_folder']
     valid_input_imgs = filter_inference_images(input_image_folder)
 
-    logger.info(f'Got {len(valid_input_imgs)} images. Started inference')
+    logger.info(f'Got {len(valid_input_imgs)} images as input. Started inference')
     pred_imgs, labels = inference(valid_input_imgs)
     logger.info('Finished inference')
 

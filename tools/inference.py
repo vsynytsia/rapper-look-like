@@ -72,6 +72,7 @@ def inference(img_paths: List[str]) -> Tuple[List[str], List[str]]:
 
     with open(config['model']['clf_path'], 'rb') as input_file:
         image_clf = pickle.load(input_file)
+        logger.info('Classifier loaded successfully')
 
     face_imgs, invalid_imgs = extract_face(img_paths)
     embeddings = get_embedding(face_imgs)

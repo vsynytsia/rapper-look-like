@@ -29,6 +29,7 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
     if embeddings is None:
         face_imgs, all_img_paths = extract_face(all_img_paths)
         embeddings = get_embedding(face_imgs)
+        logger.info('Finished creating face embeddings')
 
         with open(config['embeddings']['path'], 'wb') as output_file:
             pickle.dump(embeddings, output_file)
@@ -38,12 +39,10 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
     encoder.fit(config['images']['labels'])
     labels_encoded = encoder.transform(all_img_labels)
 
+    logger.info('Started fitting classifier')
     images_clf = KNeighborsClassifier(n_neighbors=1)
     images_clf.fit(embeddings, labels_encoded)
-
-    with open(config['model']['encoder_path'], 'wb') as output_file:
-        pickle.dump(encoder, output_file)
-        logger.info('Encoder saved successfully')
+    logger.info('Finished fitting classifier')
 
     with open(config['model']['clf_path'], 'wb') as output_file:
         pickle.dump(images_clf, output_file)
