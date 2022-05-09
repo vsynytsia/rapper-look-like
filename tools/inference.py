@@ -51,8 +51,8 @@ def filter_inference_images(folder_path: str) -> List[str]:
         valid_format=config['images']['mode']
     )
 
-    all_input_imgs = load_folder_paths(folder_path)
     invalid_input_imgs = cleaner.clean_folder(folder_path)
+    all_input_imgs = load_folder_paths(folder_path)
 
     if len(invalid_input_imgs) != 0:
         logger.warn(f'Detected {len(invalid_input_imgs)} images with either 0 or more than 1 faces on them:'
