@@ -21,7 +21,6 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
 
     :param root: path to root folder
     :param embeddings: optional, numpy array of embeddings
-    :return: classifier mean accuracy
     """
 
     all_img_paths = load_dataset_paths(root)

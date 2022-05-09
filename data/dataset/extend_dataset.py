@@ -33,7 +33,7 @@ def _update_config(path: str, new_names: List[str]) -> None:
 def extend_dataset(
         new_names: List[str],
         output_folder: str,
-        img_limit: int,
+        img_number: int,
         clean: bool = False,
         img_size: Tuple[int, int] = None,
         valid_format: str = None,
@@ -42,9 +42,9 @@ def extend_dataset(
     """
     Extends existing dataset by adding new images(specified by parameter new_names)
 
-    :param new_names: list of new rapper names images of whom are to be downloaded
+    :param new_names: list of new rapper names images of whom will be downloaded
     :param output_folder: path to output folder with images
-    :param img_limit: number of images per folder
+    :param img_number: number of images per folder
     :param clean: whether to clean extended dataset
     :param img_size: tuple of image width and height
     :param valid_format: valid image format(RGB, RGBA etc.)
@@ -57,7 +57,7 @@ def extend_dataset(
     fetcher = DatasetFetcher(
         names=new_names,
         output_folder=output_folder,
-        img_limit=img_limit,
+        img_limit=img_number,
         delete_existing=False
         )
 

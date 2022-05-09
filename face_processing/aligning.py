@@ -9,7 +9,7 @@ def align_face(path: str) -> Image:
     Rotates on image so that eyes are located on a horizontal line
 
     :param path: path to image
-    :return: aligned PIL image
+    :return: PIL image with aligned face
     """
 
     img = Image.open(path)

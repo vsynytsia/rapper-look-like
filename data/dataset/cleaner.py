@@ -15,12 +15,7 @@ logger = logger.get_logger(config['logger']['app_name'], __name__)
 
 class DatasetCleaner:
     """
-    Class to clean downloaded dataset:
-     - remove duplicate images;
-     - delete images where 0 or >1 people present;
-     - convert all images to RGB format;
-     - change all images extension;
-     - resize all images;
+    Class to clean downloaded dataset
     """
 
     def __init__(
@@ -29,7 +24,7 @@ class DatasetCleaner:
             img_size: Tuple[int, int],
             valid_extension: str,
             valid_format: str
-    ) -> None:
+            ) -> None:
         """
         :param root: path to root folder
         :param img_size: tuple of image's (new_width, new_height)
@@ -44,12 +39,12 @@ class DatasetCleaner:
 
     def clean_folder(self, folder_path: str) -> List[str]:
         """
-        Cleans one image folder:
-        - converts all images to one format;
-        - resizes all images;
-        - changes all files extensions;
-        - finds images where 0 or more than 1 people present;
-        - finds duplicate or very similar images
+        Cleans single image folder:
+        - convert all images to one format;
+        - resize all images;
+        - change all files extensions;
+        - find images where 0 or more than 1 people present;
+        - find duplicate or very similar images
 
         :param folder_path: path to folder
         :return: list of invalid images
@@ -76,11 +71,11 @@ class DatasetCleaner:
     def clean_dataset(self) -> None:
         """
         Cleans entire image dataset:
-        - converts all images to one format;
-        - resizes all images
-        - changes all files extensions;
-        - deletes images where 0 or more than 1 people present;
-        - removes duplicate or very similar images
+        - convert all images to one format;
+        - resize all images;
+        - change all files extensions;
+        - delete images where 0 or more than 1 people present;
+        - remove duplicate or very similar images
         """
 
         root = config['images']['root']

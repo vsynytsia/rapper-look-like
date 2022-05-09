@@ -8,18 +8,18 @@ from .load_image_paths import load_folder_paths
 
 class ImageBatchProcessor:
     """
-    A class to perform various operations on batch of image paths
+    A class to perform various operations on image paths batch
     """
 
-    def convert(self, paths_batch: List[str],  mode: str) -> 'ImageBatchProcessor':
+    def convert(self, paths: List[str],  mode: str) -> 'ImageBatchProcessor':
         """
         Converts images to specified format and saves them
 
-        :param paths_batch: list of image paths
+        :param paths: list of image paths
         :param mode: desired image format
         """
 
-        for path in paths_batch:
+        for path in paths:
             img = Image.open(path).convert(mode=mode)
 
             os.remove(path)
@@ -27,16 +27,16 @@ class ImageBatchProcessor:
 
         return self
 
-    def resize(self, paths_batch: List[str], size: Tuple[int, int]) -> 'ImageBatchProcessor':
+    def resize(self, paths: List[str], size: Tuple[int, int]) -> 'ImageBatchProcessor':
         """
         Resizes and saves images
 
-        :param paths_batch: list of image paths
+        :param paths: list of image paths
         :param size: tuple of images' (new_width, new_height)
         :return: self
         """
 
-        for path in paths_batch:
+        for path in paths:
             img = Image.open(path).resize(size)
 
             os.remove(path)
@@ -74,23 +74,23 @@ class ImageBatchProcessor:
         return self
 
     @staticmethod
-    def filter_invalid_extensions(img_paths: List[str], valid_extension: str) -> List[str]:
+    def filter_invalid_extensions(paths: List[str], valid_extension: str) -> List[str]:
         """
         Filters and returns images with invalid extensions
 
-        :param img_paths: list of image paths
+        :param paths: list of image paths
         :param valid_extension: valid image extension
         :return: list of image paths with invalid extensions
         """
 
-        invalid_extension_imgs = list(filter(lambda x: not x.endswith(valid_extension), img_paths))
+        invalid_extension_imgs = list(filter(lambda x: not x.endswith(valid_extension), paths))
 
         return invalid_extension_imgs
 
     @staticmethod
     def load_batch(root: str) -> Iterable[List[str]]:
         """
-        Yields a list with all image paths in subfolder
+        Yields a list with all image paths in folder
 
         :param root: path to root folder with images
         :return a list with all image paths

@@ -8,7 +8,7 @@ def num_faces_on_image(path: str) -> int:
     Detects number of faces(bounding boxes) on the image
 
     :param path: path to image
-    :return: number of detected images(bounding boxes)
+    :return: number of detected faces(bounding boxes)
     """
 
     bboxes = get_bboxes(path)[0]
@@ -18,11 +18,11 @@ def num_faces_on_image(path: str) -> int:
 
 def handle_face_number(paths: List[str], faces_allowed: int = 1) -> List[str]:
     """
-    Finds and images with 0 or more than 1 faces present
+    Finds images on which number of faces is different from faces_allowed parameter
 
     :param paths: list of images paths
     :param faces_allowed: number of faces allowed on the photo
-    :return: list of paths to images with 0 or more than 1 faces present
+    :return: list of paths to images on which number of faces is different from face_allowed parameter
     """
 
     invalid_imgs = []

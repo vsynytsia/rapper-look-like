@@ -21,7 +21,7 @@ def main():
         create_dataset(
             names=config['images']['labels'],
             output_folder=config['images']['root'],
-            img_limit=100,
+            img_number=100,
             delete_existing=True,
             clean=True,
             img_size=(config['images']['width'], config['images']['height']),

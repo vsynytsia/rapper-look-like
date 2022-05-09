@@ -21,19 +21,19 @@ class DatasetFetcher:
             self,
             names: List[str],
             output_folder: str,
-            img_limit: int,
+            img_number: int,
             delete_existing: bool
             ) -> None:
         """
         :param names: list of rappers images of whom are to be downloaded
         :param output_folder: name of the root folder
-        :param img_limit: number of images to download for each rapper
+        :param img_number: number of images to download for each rapper
         :param delete_existing: whether to delete existing output_folder
         """
 
         self.names = names
         self.output_folder = output_folder
-        self.img_limit = img_limit
+        self.img_limit = img_number
         self.delete_existing = delete_existing
 
     def fetch_dataset(self) -> None:
@@ -52,7 +52,7 @@ class DatasetFetcher:
         """
         Downloads batch of images
 
-        :param name: name of the rapper images of whom are to be downloaded
+        :param name: name of the rapper images of whom will be downloaded
         """
 
         query = f'{name} rapper face'

@@ -16,7 +16,7 @@ logger = get_logger(config['logger']['app_name'], __name__)
 
 def _nearest_indices_to_images(indices: np.ndarray) -> List[str]:
     """
-    Returns images of given the nearest neighbors indices
+    Returns images of corresponding nearest neighbors indices
 
     :param indices: numpy array with neighbors indices
     :return: list of image paths

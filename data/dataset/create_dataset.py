@@ -13,7 +13,7 @@ logger = logger.setup_logger(config['logger']['app_name'])
 def create_dataset(
         names: List[str],
         output_folder: str,
-        img_limit: int,
+        img_number: int,
         delete_existing: bool,
         clean: bool = False,
         img_size: Tuple[int, int] = None,
@@ -23,20 +23,20 @@ def create_dataset(
     """
     Creates and cleans(if needed) image dataset
 
-    :param names: name of images to be downloaded
+    :param names: list of rapper names images of whom will be downloaded
     :param output_folder: path to output folder with images
-    :param img_limit: number of images per folder
+    :param img_number: number of images per folder
     :param delete_existing: whether delete already existing dataset folder
-    :param clean: whether to clean downloaded dataset
-    :param img_size: tuple of image width and height
-    :param valid_format: valid image format(RGB, RGBA etc.)
-    :param valid_extension: valid image extension(JPG, PNG etc.)
+    :param clean: optional, whether to clean downloaded dataset
+    :param img_size: optional, tuple of image width and height
+    :param valid_format: optional, valid image format(RGB, RGBA etc.)
+    :param valid_extension: optional, valid image extension(JPG, PNG etc.)
     """
 
     fetcher = DatasetFetcher(
         names=names,
         output_folder=output_folder,
-        img_limit=img_limit,
+        img_limit=img_number,
         delete_existing=delete_existing
         )
 
