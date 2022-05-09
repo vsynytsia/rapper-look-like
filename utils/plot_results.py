@@ -7,17 +7,18 @@ from PIL import Image
 def plot(
         input_image_paths: List[str],
         pred_image_paths: List[str],
-        labels: List[str],
+        labels: List[str]
         ) -> None:
     """
     Plots pairs of input images and predicted images and saves the plot
 
-    :param input_image_paths: list of paths to inference images
+    :param input_image_paths: list of paths to inference(input) images
     :param pred_image_paths: list of paths to predicted images
     :param labels: list of predicted labels
     """
 
-    fig, axs = plt.subplots(nrows=len(input_image_paths), ncols=2, figsize=(15, 15))
+    nrows = 2 if len(input_image_paths) == 1 else len(input_image_paths)
+    fig, axs = plt.subplots(nrows=nrows, ncols=2, figsize=(15, 15))
 
     for i, (input_path, pred_path, label) in enumerate(zip(input_image_paths, pred_image_paths, labels)):
         axs[i, 0].imshow(Image.open(input_path))

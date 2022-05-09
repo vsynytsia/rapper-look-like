@@ -3,6 +3,7 @@ from typing import List, Tuple
 
 import yaml
 
+from utils.img_utils import ImageBatchProcessor
 from utils.logger import get_logger
 from .cleaner import DatasetCleaner
 from .fetcher import DatasetFetcher
@@ -73,11 +74,12 @@ def extend_dataset(
             )
 
         folder_paths = list(map(lambda x: os.path.join(config['images']['root'], x), new_names))
+        batch_processor = ImageBatchProcessor()
 
         logger.info('Started cleaning extended dataset')
         for i, folder_path in enumerate(folder_paths):
             logger.info(f'Started cleaning {new_names[i]} folder')
-            deleted = cleaner.clean_folder(folder_path)
-            logger.info(f'Deleted {deleted} images from {new_names[i]} folder')
+            invalid_imgs = cleaner.clean_folder(folder_path)
+            batch_processor.delete(invalid_imgs)
+            logger.info(f'Deleted {len(invalid_imgs)} images from {new_names[i]} folder')
         logger.info('Finished cleaning extended dataset')
-

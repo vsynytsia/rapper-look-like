@@ -29,27 +29,12 @@ class DuplicatesHandler:
         """
 
         similar_and_duplicates = []
-
         for path1, path2 in combinations(paths, 2):
 
             if self.are_similar(path1, path2) or self.are_duplicates(path1, path2):
                 similar_and_duplicates.append(path1)
 
         return similar_and_duplicates
-
-    @staticmethod
-    def are_duplicates(path1: str, path2: str) -> bool:
-        """
-        Checks if two images are exact duplicates
-
-        :param path1: path to first image
-        :param path2: path to second image
-        :return: True if two images are exact duplicates, False otherwise
-        """
-
-        img1, img2 = Image.open(path1), Image.open(path2)
-
-        return list(img1.getdata()) == list(img2.getdata())
 
     def are_similar(self, path1: str, path2: str) -> bool:
         """
@@ -71,3 +56,17 @@ class DuplicatesHandler:
         similarity = np.count_nonzero(hash1 != hash2) <= diff_limit
 
         return similarity
+
+    @staticmethod
+    def are_duplicates(path1: str, path2: str) -> bool:
+        """
+        Checks if two images are exact duplicates
+
+        :param path1: path to first image
+        :param path2: path to second image
+        :return: True if two images are exact duplicates, False otherwise
+        """
+
+        img1, img2 = Image.open(path1), Image.open(path2)
+
+        return list(img1.getdata()) == list(img2.getdata())

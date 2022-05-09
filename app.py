@@ -6,13 +6,13 @@ import yaml
 from data.dataset import create_dataset
 from tools import filter_inference_images
 from tools import train, inference
-from utils import logger
 from utils import plot
+from utils.logger import setup_logger
 
 warnings.filterwarnings("ignore")
 
 config = yaml.safe_load(open('config/config.yaml'))
-logger = logger.setup_logger(config['logger']['app_name'])
+logger = setup_logger(config['logger']['app_name'])
 
 
 def main():

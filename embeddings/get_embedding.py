@@ -9,7 +9,7 @@ from tqdm.auto import tqdm
 
 def get_embedding(imgs: List['Image']) -> np.ndarray:
     """
-    Creates a 512-dimensional representation of given image
+    Creates a 512-dimensional representation of given image(s)
 
     :param imgs: list of PIL Images
     :return: numpy array of 512-dimensional representations of given images

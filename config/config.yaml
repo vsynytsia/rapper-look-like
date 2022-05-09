@@ -107,7 +107,7 @@ model:
 
 train:
   do_train: false
-  load_embeddings: true
+  load_embeddings: false
 
 inference:
   images_folder: images_inference

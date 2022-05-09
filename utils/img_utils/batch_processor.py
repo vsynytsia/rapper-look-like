@@ -1,8 +1,9 @@
 import os
-from os.path import join, isfile
 from typing import List, Tuple, Iterable
 
 from PIL import Image
+
+from .load_image_paths import load_folder_paths
 
 
 class ImageBatchProcessor:
@@ -96,7 +97,7 @@ class ImageBatchProcessor:
         """
 
         for name in os.listdir(root):
-            folder = join(root, name)
-            folder_image_paths = [join(folder, f) for f in os.listdir(folder) if isfile(join(folder, f))]
+            folder_path = os.path.join(root, name)
+            folder_image_paths = load_folder_paths(folder_path)
             folder_image_paths.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
             yield folder_image_paths

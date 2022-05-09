@@ -57,11 +57,11 @@ class DatasetCleaner:
 
         duplicates_handler = DuplicatesHandler(similarity=90)
         batch_processor = ImageBatchProcessor()
-        invalid_imgs = []
 
         img_paths_batch = load_folder_paths(folder_path)
         batch_processor.convert(img_paths_batch, mode=self.valid_format).resize(img_paths_batch, size=self.img_size)
 
+        invalid_imgs = []
         invalid_imgs.extend(handle_face_number(img_paths_batch))
         invalid_imgs.extend(duplicates_handler.handle(img_paths_batch))
 
