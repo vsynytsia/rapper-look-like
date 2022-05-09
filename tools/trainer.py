@@ -7,6 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 
 from embeddings import get_embedding
 from face_processing import extract_face
+from utils.img_utils import ImageBatchProcessor
 from utils.img_utils import load_dataset_paths
 from utils.logger import get_logger
 
@@ -27,7 +28,16 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
     all_img_labels = list(map(lambda x: x.split('/')[2], all_img_paths))
 
     if embeddings is None:
-        face_imgs, all_img_paths = extract_face(all_img_paths)
+        logger.info('Started extracting faces from images')
+        face_imgs, invalid_imgs = extract_face(all_img_paths)
+        logger.info('Finished extracting faces from images')
+
+        if len(invalid_imgs) != 0:
+            batch_processor = ImageBatchProcessor()
+            batch_processor.delete(invalid_imgs)
+            logger.info(f'Couldnt extract faces from {len(invalid_imgs)} photos. Deleted them.')
+
+        logger.info('Started creating face embeddings')
         embeddings = get_embedding(face_imgs)
         logger.info('Finished creating face embeddings')
 
@@ -47,3 +57,6 @@ def train(root: str, embeddings: np.ndarray = None) -> None:
     with open(config['model']['clf_path'], 'wb') as output_file:
         pickle.dump(images_clf, output_file)
         logger.info('Classifier saved successfully')
+
+    with open(config['model']['encoder_path'], 'wb') as output_file:
+        pickle.dump(encoder, output_file)

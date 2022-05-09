@@ -38,12 +38,9 @@ def main():
             with open(config['embeddings']['path'], 'rb') as input_file:
                 embeddings = pickle.load(input_file)
             logger.info('Embeddings loaded successfully')
-            train(root=config['images']['root'], embeddings=embeddings)
 
-        else:
-            logger.info('Started creating image embeddings')
-            train(root=config['images']['root'])
-            logger.info('Finished creating image embeddings')
+        train(root=config['images']['root'], embeddings=embeddings)
+        logger.info('Finished training')
 
     input_image_folder = config['inference']['images_folder']
     valid_input_imgs = filter_inference_images(input_image_folder)

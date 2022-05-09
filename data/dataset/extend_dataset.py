@@ -21,8 +21,7 @@ def _update_config(path: str, new_names: List[str]) -> None:
     """
 
     data = yaml.safe_load(open(path))
-
-    duplicates = list(set(data) & set(new_names))
+    duplicates = list(set(data['images']['labels']) & set(new_names))
     if len(duplicates) > 0:
         raise ValueError(f'Config file already contains {duplicates}')
 
